@@ -25,25 +25,24 @@ game:GetService("RunService").Heartbeat:Connect(function()
     local Puzzle = PlayerGui:FindFirstChild("PuzzleUI")
     if not Puzzle then return end
 
-    -- Survivors
     for _, v in ipairs(Survivors:GetChildren()) do
         if v:GetAttribute("Username") == LocalPlayer.Name then
-            Stamina.StaminaGain = _G.StaminaGainS or 22
-            Stamina.StaminaLoss = _G.StaminaLossS or 19
+            Stamina.StaminaGain = 22
+            Stamina.StaminaLoss = 19
             Stamina.SprintSpeed = 26.5
         end
     end
 
-    -- Killers
+    
     for _, v in ipairs(Killers:GetChildren()) do
         if v:GetAttribute("Username") == LocalPlayer.Name then
-            Stamina.StaminaGain = _G.StaminaGainS or 22
-            Stamina.StaminaLoss = _G.StaminaLossS or 19
-            Stamina.SprintSpeed = 28.2
+            Stamina.StaminaGain = 22
+            Stamina.StaminaLoss = 19
+            Stamina.SprintSpeed = 28.20
         end
     end
 
-    -- FOV + Lighting
+    
     Camera.FieldOfView = 95
     Lighting.OutdoorAmbient = Color3.fromRGB(150, 150, 150)
     Lighting.Brightness = 0
@@ -69,7 +68,6 @@ game:GetService("RunService").Heartbeat:Connect(function()
     Puzzle.Enabled = false
 end)
 
--- Auto Generator
 task.spawn(function()
     while true do
         local MF = workspace:FindFirstChild("Map")
@@ -90,7 +88,7 @@ task.spawn(function()
             continue
         end
 
-        task.wait(math.random(4, 6))
+        task.wait(math.random(4, 5))
 
         for _, v in ipairs(Map:GetChildren()) do
             if v.Name == "Generator" and v:FindFirstChild("Remotes") and v.Remotes:FindFirstChild("RE") then
